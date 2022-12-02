@@ -2,6 +2,7 @@ const IS_FullTime=1;
 const IS_PartTime=2;
 const WagePer_Hour=20;
 const MaxWorkingDays_Month=20;
+const MaxHrs_Month=160;
 
 function GetWorkingHrs(empCheck){
     switch(empCheck){
@@ -19,12 +20,14 @@ function GetWorkingHrs(empCheck){
 }
 
     let TotalHrs=0;
-    for(let day=0;day<MaxWorkingDays_Month;day++){
+    let TotalWorkingDays=0;
+    while(TotalHrs < MaxHrs_Month && TotalWorkingDays < MaxWorkingDays_Month){
         let empCheck=Math.floor(Math.random()*10)%3;
         TotalHrs+=GetWorkingHrs(empCheck);
+        TotalWorkingDays++;
     }
     let EmpWage=TotalHrs*WagePer_Hour;
-    console.log("Hours  : "+TotalHrs+"  Employee Wage : " +EmpWage);
+    console.log("Total Workng Days : "+TotalWorkingDays+ "      Total Hours  : "+TotalHrs+"     Total Employee Wage : " +EmpWage);
    
     
 
